@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(cors())
 
 const router = require('./routes/user')
-app.use('/api',router)
+app.use('/api/user',router)
 
 app.listen(3000, () => {
     console.log("Listening on 3000")
