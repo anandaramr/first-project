@@ -1,9 +1,13 @@
+import {Routes, Route} from "react-router-dom"
+import Home from "./Pages/Home"
 
 function App() {
 
   return (
     <>
-      <div className="text-rose-800 font-semibold">Hello World</div>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
     </>
   )
 }
