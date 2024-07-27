@@ -1,4 +1,3 @@
-import Header from "../Components/Header"
 import LoginCard from "../Components/LoginCard"
 export default function Login()
 {
