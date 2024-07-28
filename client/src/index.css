@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+::-webkit-scrollbar{
+    @apply bg-red-300 w-2
+}
+
+::-webkit-scrollbar-thumb{
+    @apply bg-red-400 rounded-md bg-gradient-to-b from-red-400 to-rose-500
+}
+
+body{
+    @apply bg-black
+}
