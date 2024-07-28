@@ -35,8 +35,14 @@ app.post('/login', async (req,res) => {
         insertNewToken(refreshToken)
         res.status(201).json({ accessToken, refreshToken })
     }else{
-        res.status(201).json({ message: "Invalid password" })
+        res.status(401).json({ message: "Invalid password" })
     }
+})
+
+app.get('/search/:username', async (req,res) => {
+    const user = await User.findOne().where("username").equals(req.params.username)
+    const found = user ? true : false
+    return res.status(200).json({ found, user: user?.username })
 })
 
 app.post('/refresh', async (req,res) => {
@@ -69,7 +75,7 @@ function generateRefreshToken(user){
 function authenticate(req,res,next){
     const authHeader = req.headers.authorization?.split(' ')
     const token = authHeader && authHeader[1]
-    if(!token) return res.status(200).json({ message: "Token necessary to authorize" });
+    if(!token) return res.status(401).json({ message: "Token necessary to authorize" });
         
     jwt.verify(token, process.env.accessKey, (err, response) => {
         if(err) return res.status(401).json({ message: err.message });

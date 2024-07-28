@@ -15,6 +15,7 @@ export const AuthProvider = ({ children }) => {
             setUser(res.data.user)
             setIsLoading(false)
         })
+        .catch(() => setIsLoading(false))
     }
 
     const context = {user, isLoading, authorize}
