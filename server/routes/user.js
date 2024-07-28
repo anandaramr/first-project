@@ -11,7 +11,13 @@ app.post('/signup', async (req,res) => {
     const user = new User({username: req.body.username, password})
 
     await user.save()
-    .then(() => res.status(201).json({ message: "Signed up successfully" }))
+    .then(() => {
+        const accessToken = generateAccessToken(user.username)
+        const refreshToken = generateRefreshToken(user.username)
+        insertNewToken(refreshToken)
+        
+        res.status(201).json({ success: true, message: "Signed up successfully", accessToken, refreshToken })
+    })
     .catch(err => {
         res.status(401).json({ message: err })
     })
@@ -48,7 +54,7 @@ app.post('/refresh', async (req,res) => {
     })
 })
 
-app.post('/', authenticate, (req,res) => {
+app.get('/', authenticate, (req,res) => {
     res.status(200).json({ user: res.user.user })
 })
 
@@ -61,8 +67,9 @@ function generateRefreshToken(user){
 }
 
 function authenticate(req,res,next){
-    const token = req.headers.authorization.split(' ')[1]
-    if(!token) return res.status(400).json({ message: "Token is needed" });
+    const authHeader = req.headers.authorization?.split(' ')
+    const token = authHeader && authHeader[1]
+    if(!token) return res.status(200).json({ message: "Token necessary to authorize" });
         
     jwt.verify(token, process.env.accessKey, (err, response) => {
         if(err) return res.status(401).json({ message: err.message });
@@ -75,7 +82,6 @@ function authenticate(req,res,next){
 async function insertNewToken(token){
     const newToken = new Token({ token })
     await newToken.save()
-        .catch((err) => console.log(err))
 }
 
 async function deleteToken(token){
