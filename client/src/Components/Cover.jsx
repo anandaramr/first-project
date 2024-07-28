@@ -3,7 +3,7 @@ function Cover()
 {
     return(
         <div>
-        <img className="absolute top-0 -z-20 blur-sm" src="../assets/back2.avif" alt="cover"/>
+        <img className="absolute top-0 -z-20 blur-sm size-[100%]" src="../assets/lifeofpine.jpg" alt="cover"/>
         <Welcome/>
         </div>
     )
