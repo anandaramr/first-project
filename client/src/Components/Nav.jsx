@@ -5,7 +5,7 @@ import Menu from "../Components/Menu"
 
 function Nav(){
 
-    const { user, isLoading, authorize } = useContext(AuthContext)
+    const { user, isLoading, authorize, logout } = useContext(AuthContext)
     const navigate = useNavigate()
 
     useEffect(() => {
@@ -27,9 +27,9 @@ function Nav(){
         navigate('/profile')
     }
 
-    const logout = (evt) => {
+    const doLogout = (evt) => {
         evt.preventDefault()
-        navigate('/login')
+        logout()
     }
 
     const account = <button onClick={openSettings} onBlur={(evt) => closeSettings(evt)} className="relative w-[12%] flex justify-end px-3 cursor-default">
@@ -68,7 +68,7 @@ function Nav(){
                     <span className="material-symbols-outlined pr-3 pl-1 text-2xl">account_circle</span>
                     <span className="relative -top-1 pr-1">Profile</span>
                 </div>
-                <div id="logout" onMouseDown={logout} className="hover:text-rose-500 hover:bg-slate-100 px-3 py-2 duration-150">
+                <div id="logout" onMouseDown={doLogout} className="hover:text-rose-500 hover:bg-slate-100 px-3 py-2 duration-150">
                     <span className="material-symbols-outlined pr-3 pl-1 text-2xl">logout</span>
                     <span className="relative -top-1 pr-1">Logout</span>
                 </div>

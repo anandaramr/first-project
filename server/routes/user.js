@@ -39,6 +39,12 @@ app.post('/login', async (req,res) => {
     }
 })
 
+app.post('/logout', async (req,res) => {
+    const result = await deleteToken(req.body.token)
+    if(result) res.status(201).json({result});
+    else res.status(400).json({ message: "Logout Failed" })
+})
+
 app.get('/search/:username', async (req,res) => {
     const user = await User.findOne().where("username").equals(req.params.username)
     const found = user ? true : false
