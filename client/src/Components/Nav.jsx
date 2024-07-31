@@ -23,7 +23,7 @@ function Nav(){
     </div>
 
     return(
-        <div className="fixed w-full">
+        <div className="fixed w-full ">
             
             <div className=" bg-gray-900  items-center opacity-80 h-[11vh] shadow-[0px_-10px_15px_black] flex justify-between p-4 cursor-default select-none">
             
