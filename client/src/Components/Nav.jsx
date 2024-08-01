@@ -41,10 +41,7 @@ function Nav({path}){
         <button className="border-2 border-white rounded px-2 text-md text-white hover:bg-white hover:text-black hover:shadow-lg font-semibold duration-150 py-1 mx-2 flex-shrink-0" onClick={() => navigate('/signup')}>Sign Up</button>
     </div>
 
-    const loading = <div className="w-[12%] h-fit">
-        <div className="animate-pulse bg-rose-100 inline rounded w-[10%] px-3 py-2 mx-2 text-transparent top-1 relative">Login</div>
-        <div className="animate-pulse bg-rose-100 inline rounded w-[10%] px-3 py-2 mx-2 text-transparent top-1 relative">Sign Up</div>
-    </div>
+    const loading = <div className="relative top-1 mx-6 w-[10%] h-[5svh] flex-shrink-0 flex flex-nowrap animate-pulse bg-white rounded"></div>
 
     return(
         <div className="fixed w-full z-20 top-0 h-[11svh] cursor-default">

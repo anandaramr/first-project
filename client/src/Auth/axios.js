@@ -27,4 +27,7 @@ async function refresh(){
         document.cookie = `auth=${res.data.accessToken}`
         document.cookie = `token=${res.data.refreshToken}`
     })
+    .catch(err => {
+        console.log(err)
+    })
 }
