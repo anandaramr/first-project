@@ -4,7 +4,7 @@ function Profile()
 {
     return(
         <div className="">
-            <Nav />
+            <Nav path="Profile"/>
             <img className="w-full object-cover h-svh centre  absolute -z-10 opacity-50 blur-sm "src="../assets/pro.jpg" alt="profile background"/>
             <div className="flex-col flex items-center justify-center h-svh space-y-16 ">
             <h2 className="font-poppins text-white text-center text-5xl">Profile</h2>
