@@ -11,6 +11,9 @@ export default {
         "montserrat": ["Montserrat", "sans-serif"],
         "playwrite": ["Playwrite HR Lijeva", "cursive"],
         "raleway": ["Raleway", "sans-serif"]
+      },
+      fontSize: {
+        "lmd": "18px"
       }
     },
   },

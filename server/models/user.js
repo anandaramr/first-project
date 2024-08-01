@@ -10,11 +10,17 @@ const user = new mongoose.Schema({
         type: String,
         required: [true, "Password is required"]
     },
-    email: {
-        type: String,
+    email: String,
+    name: String,
+    room: {
+            active: Boolean,
+            startDate: Date,
+            endDate: Date
     },
-    phone: {
-        type: Number
+    sports: {
+            plan: Boolean,
+            time: String,
+            startDate: Date,
     }
 })
 

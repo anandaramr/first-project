@@ -8,7 +8,7 @@ require('dotenv').config()
 
 app.post('/signup', async (req,res) => {
     const password = await bcrypt.hash(req.body.password,10)
-    const user = new User({username: req.body.username, password})
+    const user = new User({username: req.body.username, password, email: req.body.email})
 
     await user.save()
     .then(() => {
@@ -48,7 +48,8 @@ app.post('/logout', async (req,res) => {
 app.get('/search/:username', async (req,res) => {
     const user = await User.findOne().where("username").equals(req.params.username)
     const found = user ? true : false
-    return res.status(200).json({ found, user: user?.username })
+    const { password, __v, _id, ...userDetails } = user ? user.toObject() : {}
+    return res.status(200).json({ found, details: userDetails })
 })
 
 app.post('/refresh', async (req,res) => {
@@ -57,7 +58,7 @@ app.post('/refresh', async (req,res) => {
     if(!(await deleteToken(token))) return res.status(401).json({ message: "Authorization failed" });
 
     jwt.verify(token, process.env.refreshKey, (err, result) => {
-        if(err) return res.status(401).json({ message: "Authorization failed" });
+        if(err) return res.status(401).json({ message: "JWT verification failed" });
 
         const accessToken = generateAccessToken(result.user)
         const refreshToken = generateRefreshToken(result.user)
@@ -71,7 +72,7 @@ app.get('/', authenticate, (req,res) => {
 })
 
 function generateAccessToken(user){
-    return jwt.sign({user}, process.env.accessKey, { expiresIn: '15s' })
+    return jwt.sign({user}, process.env.accessKey, { expiresIn: '3s' })
 }
 
 function generateRefreshToken(user){
