@@ -1,5 +1,4 @@
 import Welcome from "./Welcome"
-
 function Cover()
 {
     return(
