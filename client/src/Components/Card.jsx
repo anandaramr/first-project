@@ -2,7 +2,7 @@ import Element from "./Element"
 function Card()
 {
     return(
-        <div className="flex-col w-[90%] rounded-xl bg-slate-200 p-16 space-y-20">
+        <div className="flex-col w-[90%] rounded-xl bg-slate-200 p-16 space-y-20 mb-20 -z-10">
         <Element heading="Auditorium" comp="Open Air Auditorium
 Experience the beauty of nature while enjoying world-class performances at our Open Air Auditorium. This stunning venue offers a unique blend of natural acoustics and breathtaking views, providing an unforgettable setting for concerts, theatrical productions, and cultural events. With comfortable seating and state-of-the-art facilities, it’s the perfect place to enjoy entertainment under the stars.
 Indoor Auditorium Step into our state-of-the-art Indoor Auditorium, where modern design meets exceptional acoustics. This versatile venue is equipped with the latest technology to host a variety of events, from concerts and theater productions to conferences and lectures. With comfortable seating, excellent sightlines, and a sophisticated sound system." source="../assets/audi.jpg"/>
