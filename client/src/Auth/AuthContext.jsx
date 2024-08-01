@@ -19,7 +19,10 @@ export const AuthProvider = ({ children }) => {
             setUser(res.data.user)
             setIsLoading(false)
         })
-        .catch(() => setIsLoading(false))
+        .catch(() => {
+            setUser(null)
+            setIsLoading(false)
+        })
     }
 
     function logout(){
