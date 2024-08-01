@@ -3,7 +3,7 @@ import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Menu from "../Components/Menu"
 
-function Nav(){
+function Nav({path}){
 
     const { user, isLoading, authorize, logout } = useContext(AuthContext)
     const navigate = useNavigate()
@@ -57,7 +57,7 @@ function Nav(){
             
             <div className="group select-none h-svh w-fit">
                 <span className="material-symbols-outlined flex items-center absolute top-0 p-4 py-6 pr-14 text-3xl text-white" >menu</span>
-                <Menu />
+                <Menu path={path} />
             </div>
 
             <div id="settings" className="scale-0 bg-white rounded py-3 px-2 text-black font-montserrat text-md absolute top-[10svh] right-3 space-y-1">
