@@ -1,7 +1,7 @@
 import Element from "./Element";
 function Card() {
   return (
-    <div className="flex-col w-[90%] rounded-xl bg-slate-200 p-16 space-y-20 mb-24">
+    <div className="flex-col w-[90%] rounded-xl bg-slate-200 py-20 sm:py-16 px-5 xsm:px-10 md:px-16 space-y-20 mb-24 flex-shrink">
       <Element
         heading="Auditorium"
         comp="Open Air Auditorium

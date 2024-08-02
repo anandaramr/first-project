@@ -50,7 +50,7 @@ function Nav({path}){
             
                 <div className="w-[12%] m-1"></div>
 
-                <p className="font-playwrite size inline-block text-3xl text-white" >Life of Pine</p>
+                <p className="font-playwrite size inline-block text-2xl xsm:text-3xl text-white" >Life of Pine</p>
                 {isLoading && loading}
                 {!isLoading && (user ? account : notLoggedIn)}
             </div>
