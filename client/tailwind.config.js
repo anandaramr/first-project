@@ -13,7 +13,10 @@ export default {
         "raleway": ["Raleway", "sans-serif"]
       },
       fontSize: {
-        "lmd": "18px"
+        "lmd": "18px",
+      },
+      screens: {
+        "xsm": "540px"
       }
     },
   },
