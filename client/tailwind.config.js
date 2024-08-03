@@ -16,7 +16,7 @@ export default {
         "lmd": "18px",
       },
       screens: {
-        "xsm": "540px"
+        "xsm": "550px"
       }
     },
   },
