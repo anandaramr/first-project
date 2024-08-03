@@ -7,9 +7,11 @@ export const axiosJWT = axios.create()
 axiosJWT.interceptors.request.use(async (config) => {
     const date = new Date()
     const token = getCookie('auth')
-    if(!token) return config;
-    const decodedToken = jwtDecode(token)
+    const controller = new AbortController()
 
+    if(!token) controller.abort()
+
+    const decodedToken = jwtDecode(token)
     if(decodedToken.exp*1000 < date.getTime()){
         await refresh()
     }
@@ -26,5 +28,8 @@ async function refresh(){
     .then(res => {
         document.cookie = `auth=${res.data.accessToken}`
         document.cookie = `token=${res.data.refreshToken}`
+    })
+    .catch(err => {
+        console.log(err)
     })
 }
