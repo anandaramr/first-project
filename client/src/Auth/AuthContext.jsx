@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true)
     const navigate = useNavigate()
     
-    function authorize(){
+    async function authorize(){
         axiosJWT.get('http://localhost:3000/api/user')
         .then(res => {
             setUser(res.data.user)
@@ -31,6 +31,9 @@ export const AuthProvider = ({ children }) => {
         .then(() => {
             document.cookie = "auth= ; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
             document.cookie = "token= ; Expires=Thu, 01 Jan 1970 00:00:01 GMT"
+
+            // user set to null to prevent redirect to home
+            setUser(null)
             navigate('/login')
         })
     }
